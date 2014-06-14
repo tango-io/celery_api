@@ -10,6 +10,8 @@ Gem::Specification.new do |s|
   s.description = "This is an Ruby library that wraps the Celery data model"
   s.licenses    = "MIT"
 
+  s.required_ruby_version = '~> 2.0'
+
   s.files = Dir["{lib}/**/*", "MIT-LICENSE", "README.rdoc"]
   s.test_files = Dir["spec/**/*"]
 
