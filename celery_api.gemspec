@@ -13,14 +13,14 @@ Gem::Specification.new do |s|
   s.files = Dir["{lib}/**/*", "MIT-LICENSE", "README.rdoc"]
   s.test_files = Dir["spec/**/*"]
 
-  s.add_dependency "httparty"
-  s.add_dependency "addressable"
+  s.add_dependency "httparty",    "~> 0.13"
+  s.add_dependency "addressable", "~> 2.3"
 
   # Rspec testing framework
-  s.add_development_dependency "rspec"
-  s.add_development_dependency "rspec-core"
-  s.add_development_dependency "rspec-expectations"
-  s.add_development_dependency "rspec-mocks"
-  s.add_development_dependency "faker"
-  s.add_development_dependency "pry"
+  s.add_development_dependency "pry",                "~> 0.10"
+  s.add_development_dependency "faker",              "~> 1.3"
+  s.add_development_dependency "rspec",              "~> 3"
+  s.add_development_dependency "rspec-core",         "~> 3"
+  s.add_development_dependency "rspec-mocks",        "~> 3"
+  s.add_development_dependency "rspec-expectations", "~> 3"
 end
