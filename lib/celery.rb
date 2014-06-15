@@ -2,6 +2,7 @@ require 'httparty'
 require 'addressable/uri'
 
 module Celery
+  autoload :User,              "celery/user"
   autoload :Base,              "celery/base"
   autoload :Buyer,             "celery/buyer"
   autoload :Card,              "celery/card"
