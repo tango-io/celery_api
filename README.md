@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/thenaox/celery_api.png?label=ready&title=Ready)](https://waffle.io/thenaox/celery_api)
 # Celery API
 
 [![Build Status](https://travis-ci.org/TheNaoX/celery_api.svg?branch=master)](https://travis-ci.org/TheNaoX/celery_api)
