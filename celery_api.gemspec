@@ -22,6 +22,8 @@ Gem::Specification.new do |s|
   s.add_development_dependency "pry",                "~> 0.10"
   s.add_development_dependency "faker",              "~> 1.3"
   s.add_development_dependency "rspec",              "~> 3"
+  s.add_development_dependency "guard",              "~> 2.6"
+  s.add_development_dependency "guard-rspec",        "~> 4.2"
   s.add_development_dependency "rspec-core",         "~> 3"
   s.add_development_dependency "rspec-mocks",        "~> 3"
   s.add_development_dependency "rspec-expectations", "~> 3"
