@@ -15,6 +15,9 @@ module Celery
   autoload :Products,          "celery/products"
   autoload :Tracking,          "celery/tracking"
   autoload :ProcessorBase,     "celery/processor_base"
+  autoload :ShopsProcessor,    "celery/shops_processor"
   autoload :OrdersProcessor,   "celery/orders_processor"
+  autoload :UsersProcessor,    "celery/users_processor"
+  autoload :CouponsProcessor,  "celery/coupons_processor"
   autoload :ProductsProcessor, "celery/products_processor"
 end
