@@ -1,10 +1,12 @@
 # Celery API
 
-Celery API wrapper
-
 [![Build Status](https://travis-ci.org/TheNaoX/celery_api.svg?branch=master)](https://travis-ci.org/TheNaoX/celery_api)
 [![Code Climate](https://codeclimate.com/github/TheNaoX/celery_api.png)](https://codeclimate.com/github/TheNaoX/celery_api)
 [![Code Climate](https://codeclimate.com/github/TheNaoX/celery_api/coverage.png)](https://codeclimate.com/github/TheNaoX/celery_api)
+[![Gem Version](https://badge.fury.io/rb/celery_api.svg)](http://badge.fury.io/rb/celery_api)
+
+Celery API wrapper
+
 
 * [Clery API documentation](https://www.trycelery.com/developer)
 
