@@ -4,5 +4,8 @@ rvm:
   - 2.1
   - 1.9.3
 
+env:
+  - CODECLIMATE_REPO_TOKEN=81677090b61d081814257a5aec3d12faad76c23ba58453795fc7f6cb4ae5f1c3
+
 before_script: bundle install
 script: bundle exec rspec spec

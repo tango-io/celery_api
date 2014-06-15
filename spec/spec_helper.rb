@@ -1,6 +1,9 @@
+require "codeclimate-test-reporter"
 require 'celery_api'
 require 'faker'
 require 'pry'
+
+CodeClimate::TestReporter.start
 
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
 
