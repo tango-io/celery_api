@@ -1,15 +1,22 @@
 module Celery
 
   class Orders < Base
-    attr_accessor :total, :count, :limit,
-      :offset, :has_more, :orders
 
-    def orders=(orders)
-      @orders = []
-      orders.each do |order|
-        @orders << Celery::Order.new(order)
+    class << self
+      def all(args={})
+        endpoint_path = Celery.endpoint + "orders"
+        options       = Celery.parameterize_options(args)
+        response = HTTParty.get("#{endpoint_path}?#{options}")
+        return build_orders(response['orders'])
+      end
+
+      def build_orders(orders)
+        orders.map do |order|
+          Celery::Order.new(order)
+        end
       end
     end
+
   end
 
 end

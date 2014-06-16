@@ -1,20 +1,16 @@
 require 'spec_helper'
 
 describe Celery::Products do
-  let!(:attrs) do
-    {
-      "total"    => 10,
-      "count"    => 10,
-      "limit"    => 0,
-      "offset"   => 0,
-      "has_more" => false,
-      "products" => [ { "id" => 'foo' } ]
-    }
+  it 'returns all the products from the endpoint' do
+    products = Celery::Products.all
+    expect(products).to       be_kind_of Array
+    expect(products.first).to be_kind_of Celery::Product
   end
-  let!(:products) { Celery::Products.new(attrs) }
 
-  it 'returns an instance of the celery product' do
-    expect(products.products).to       be_kind_of Array
-    expect(products.products.first).to be_kind_of Celery::Product
+  it 'builds the products based on the array' do
+    products = [{ "id" => "1234" }]
+    products = Celery::Products.build_products(products)
+    expect(products.first).to    be_kind_of Celery::Product
+    expect(products.first.id).to eq("1234")
   end
 end

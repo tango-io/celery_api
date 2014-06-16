@@ -1,13 +1,16 @@
 module Celery
 
   class Products < Base
-    attr_accessor :total, :count, :limit,
-      :offset, :has_more, :products
+    class << self
+      def all(args={})
+        endpoint_path = Celery.endpoint + "products"
+        options       = Celery.parameterize_options(args)
+        response = HTTParty.get("#{endpoint_path}?#{options}")
+        return build_products(response['products'])
+      end
 
-    def products=(products)
-      @products = []
-      products.each do |product|
-        @products << Celery::Product.new(product)
+      def build_products(products)
+        products.map { |product| Celery::Product.new(product) }
       end
     end
   end

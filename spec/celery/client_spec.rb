@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 describe Celery::Client do
-  let!(:access_token)    { "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiI1Mzg4ZTcxYzVkNTE5NDA1MDA0ZTNjM2MifQ.Vw1dikATVaAK5YLZFTPOXKpJJexa8T6NiRuE3nh1nAU" }
-  let!(:client) { Celery::Client.new(access_token: access_token) }
+  let!(:access_token) { "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiI1Mzg4ZTcxYzVkNTE5NDA1MDA0ZTNjM2MifQ.Vw1dikATVaAK5YLZFTPOXKpJJexa8T6NiRuE3nh1nAU" }
+  let!(:client)       { Celery::Client.new }
 
   it 'has the access_token' do
     expect(client.access_token).to eq(access_token)

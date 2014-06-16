@@ -1,21 +1,16 @@
 require 'spec_helper'
 
 describe Celery::Orders do
-  let!(:attrs) do
-    {
-      "total"    => 10,
-      "count"    => 10,
-      "limit"    => 0,
-      "offset"   => 0,
-      "has_more" => false,
-      "orders" => [ { "id" => 'foo' } ]
-    }
+  it 'returns all the orders from the endpoint' do
+    orders = Celery::Orders.all
+    expect(orders).to       be_kind_of Array
+    expect(orders.first).to be_kind_of Celery::Order
   end
 
-  let!(:orders) { Celery::Orders.new(attrs) }
-
-  it 'returns an instance of the celery order' do
-    expect(orders.orders).to       be_kind_of Array
-    expect(orders.orders.first).to be_kind_of Celery::Order
+  it 'builds the orders based on the array' do
+    orders = [{ "id" => "1234" }]
+    orders = Celery::Orders.build_orders(orders)
+    expect(orders.first).to    be_kind_of Celery::Order
+    expect(orders.first.id).to eq("1234")
   end
 end

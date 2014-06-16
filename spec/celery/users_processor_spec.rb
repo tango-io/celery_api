@@ -15,4 +15,9 @@ describe Celery::UsersProcessor do
   it 'returns the response' do
     expect(users.send(:get_user)).to be_kind_of Hash
   end
+
+  it 'updates the user' do
+    users.update_me(name: 'Wilfredo')
+    expect(users.me.name).to eq('Wilfredo')
+  end
 end
