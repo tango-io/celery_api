@@ -9,7 +9,7 @@
 Celery API wrapper
 
 
-* [Clery API documentation](https://www.trycelery.com/developer)
+* [Celery API documentation](https://www.trycelery.com/developer)
 
 ## Usage
 
