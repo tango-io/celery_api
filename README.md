@@ -11,10 +11,65 @@ Celery API wrapper
 
 * [Clery API documentation](https://www.trycelery.com/developer)
 
+## Usage
 
-## Work in Progress
+Add your celery API key.
 
-* Add endpoint functionality
+``` ruby
+Celery.access_token = "foo"
+```
+
+### Products
+
+Get all the products from the API.
+
+``` ruby
+Celery::Product.all
+# => [#<Celery::Product:0x00000103508918 @id="5388e7749ee1950400de0555", @name="Chocholate cake", @slug="choco-cake">]
+```
+
+### Orders
+
+Get all the orders from the API.
+
+``` ruby
+Celery::Orders.all
+# => [#<Celery::Order:0x0000010116aa10
+  @id="101475307",
+  @buyer= #<Celery::Buyer:0x00000101162ea0>,
+  @card=#<Celery::Card:0x0000010115a840>,
+  @name="Chocholate cake",
+  @notes="",
+  @products= [#<Celery::Product:0x000001011605b0>],
+  @status="paid_balance",
+  @subtotal=0,
+  @taxes=0,
+  @total=0>]
+```
+
+Decode an order from the confirmation page payload.
+
+``` ruby
+Celery::Orders.decode_order(params[:order])
+# => #<Celery::Order:0x0000010116aa10
+  @id="101475307",
+  @buyer= #<Celery::Buyer:0x00000101162ea0>,
+  @card=#<Celery::Card:0x0000010115a840>,
+  @name="Chocholate cake",
+  @notes="",
+  @products= [#<Celery::Product:0x000001011605b0>],
+  @status="paid_balance",
+  @subtotal=0,
+  @taxes=0,
+  @total=0>
+```
+
+## Roadmap
+
+* Finish Orders and Products endpoint
+* Add users endpoint
+* Add coupons endpoint
+* Add shop endpoint
 
 The MIT License (MIT)
 
