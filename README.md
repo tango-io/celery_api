@@ -1,10 +1,10 @@
 # Celery API
 
-[![Build Status](https://travis-ci.org/TheNaoX/celery_api.svg?branch=master)](https://travis-ci.org/TheNaoX/celery_api)
-[![Code Climate](https://codeclimate.com/github/TheNaoX/celery_api.png)](https://codeclimate.com/github/TheNaoX/celery_api)
-[![Code Climate](https://codeclimate.com/github/TheNaoX/celery_api/coverage.png)](https://codeclimate.com/github/TheNaoX/celery_api)
+[![Build Status](https://travis-ci.org/tangosource/celery_api.svg?branch=master)](https://travis-ci.org/tangosource/celery_api)
+[![Code Climate](https://codeclimate.com/github/tangosource/celery_api.png)](https://codeclimate.com/github/tangosource/celery_api)
+[![Code Climate](https://codeclimate.com/github/tangosource/celery_api/coverage.png)](https://codeclimate.com/github/tangosource/celery_api)
 [![Gem Version](https://badge.fury.io/rb/celery_api.svg)](http://badge.fury.io/rb/celery_api)
-[![Stories in Ready](https://badge.waffle.io/thenaox/celery_api.png?label=ready&title=Ready)](https://waffle.io/thenaox/celery_api)
+[![Stories in Ready](https://badge.waffle.io/tangosource/celery_api.png?label=ready&title=Ready)](https://waffle.io/tangosource/celery_api)
 
 Celery API wrapper
 
