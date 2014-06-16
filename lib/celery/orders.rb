@@ -15,6 +15,11 @@ module Celery
           Celery::Order.new(order)
         end
       end
+
+      def decode_order(encoded_string)
+        decoded_string = Base64.decode64(encoded_string)
+        Celery::Order.new(JSON.parse(decoded_string))
+      end
     end
 
   end
