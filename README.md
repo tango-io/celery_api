@@ -24,7 +24,7 @@ Celery.access_token = "foo"
 Get all the products from the API.
 
 ``` ruby
-Celery::Product.all
+Celery::Products.all
 # => [#<Celery::Product:0x00000103508918 @id="5388e7749ee1950400de0555", @name="Chocholate cake", @slug="choco-cake">]
 ```
 
