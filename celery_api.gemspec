@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.version     = Celery::VERSION
   s.authors     = ["Antonio Chavez"]
   s.email       = ["cavjzz@gmail.com"]
-  s.homepage    = "https://github.com/TheNaoX/celery_api"
+  s.homepage    = "https://github.com/tangosource/celery_api"
   s.summary     = "Celery API wrapper"
   s.description = "This is an Ruby library that wraps the Celery data model"
   s.licenses    = "MIT"
