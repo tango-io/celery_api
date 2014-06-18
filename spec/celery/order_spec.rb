@@ -9,7 +9,7 @@ describe Celery::Order, 'class methods' do
 
   it 'builds the orders based on the array' do
     orders = [{ "id" => "1234" }]
-    orders = Celery::Order.build_orders(orders)
+    orders = Celery::Order.build_collection(orders)
     expect(orders.first).to    be_kind_of Celery::Order
     expect(orders.first.id).to eq("1234")
   end
