@@ -24,7 +24,7 @@ Celery.access_token = "foo"
 Get all the products from the API.
 
 ``` ruby
-Celery::Products.all
+Celery::Product.all
 # => [#<Celery::Product:0x00000103508918 @id="5388e7749ee1950400de0555", @name="Chocholate cake", @slug="choco-cake">]
 ```
 
@@ -33,7 +33,7 @@ Celery::Products.all
 Get all the orders from the API.
 
 ``` ruby
-Celery::Orders.all
+Celery::Order.all
 # => [#<Celery::Order:0x0000010116aa10
   @id="101475307",
   @buyer= #<Celery::Buyer:0x00000101162ea0>,
@@ -50,7 +50,7 @@ Celery::Orders.all
 Decode an order from the confirmation page payload.
 
 ``` ruby
-Celery::Orders.decode_order(params[:order])
+Celery::Order.decode_order(params[:order])
 # => #<Celery::Order:0x0000010116aa10
   @id="101475307",
   @buyer= #<Celery::Buyer:0x00000101162ea0>,

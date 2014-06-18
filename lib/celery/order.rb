@@ -1,6 +1,11 @@
 module Celery
 
   class Order < Base
+
+    ENDPOINT_RESOURCE = "orders"
+
+    extend Celery::EndpointMethods
+
     attr_accessor :id, :status, :name, :image, :slug,
       :auto_charge, :seller, :buyer, :payment, :products,
       :coupon, :subtotal, :total, :deposit, :balance, :discount,
@@ -29,6 +34,13 @@ module Celery
 
     def card=(card)
       @card = Celery::Card.new(card)
+    end
+
+    class << self
+      def decode(encoded_string)
+        decoded_string = Base64.decode64(encoded_string)
+        Celery::Order.new(JSON.parse(decoded_string))
+      end
     end
   end
 

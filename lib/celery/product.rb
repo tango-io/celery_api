@@ -1,6 +1,11 @@
 module Celery
 
   class Product < Base
+
+    ENDPOINT_RESOURCE = "products"
+
+    extend Celery::EndpointMethods
+
     attr_accessor :id, :_id, :user_id, :slug, :name,
       :image, :price, :deposit, :shipping,
       :quantity, :campaign, :options, :extras, :analytics,
