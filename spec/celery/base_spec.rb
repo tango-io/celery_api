@@ -1,12 +1,12 @@
 require 'spec_helper'
 
 describe Celery::Base do
-  Celery::Base.class_eval do
+  class Foo < Celery::Base
     attr_accessor :foo
   end
 
   it 'calls the accessor' do
-    expect_any_instance_of(Celery::Base).to receive(:foo=)
-    Celery::Base.new(foo: 'foo')
+    expect_any_instance_of(Foo).to receive(:foo=)
+    Foo.new(foo: 'foo')
   end
 end

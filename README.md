@@ -25,7 +25,7 @@ Get all the products from the API.
 
 ``` ruby
 Celery::Product.all
-# => [#<Celery::Product:0x00000103508918 @id="5388e7749ee1950400de0555", @name="Chocholate cake", @slug="choco-cake">]
+# => [#<Celery::Product @id="foo", @name="Foo bar", @slug="foo-bar">]
 ```
 
 ### Orders
@@ -34,8 +34,8 @@ Get all the orders from the API.
 
 ``` ruby
 Celery::Order.all
-# => [#<Celery::Order:0x0000010116aa10
-  @id="101475307",
+# => [#<Celery::Order
+  @id="foo",
   @buyer= #<Celery::Buyer:0x00000101162ea0>,
   @card=#<Celery::Card:0x0000010115a840>,
   @name="Chocholate cake",
@@ -51,8 +51,8 @@ Decode an order from the confirmation page payload.
 
 ``` ruby
 Celery::Order.decode_order(params[:order])
-# => #<Celery::Order:0x0000010116aa10
-  @id="101475307",
+# => #<Celery::Order
+  @id="foo",
   @buyer= #<Celery::Buyer:0x00000101162ea0>,
   @card=#<Celery::Card:0x0000010115a840>,
   @name="Chocholate cake",
@@ -64,10 +64,56 @@ Celery::Order.decode_order(params[:order])
   @total=0>
 ```
 
+### User
+
+It gets the store owner profile
+
+``` ruby
+user = Celery::User.me
+# => #<Celery::User
+  @_id="foo",
+  @access_token="foo",
+  @affirm={},
+  @analytics={"ga_id"=>"", "perfect_audience_id"=>""},
+  @business={"name"=>nil, "email"=>nil, "phone"=>nil},
+  @confirmation_url="",
+  @created=1401480988785,
+  @created_date="2014-05-30T20:16:28.785Z",
+  @currency="usd",
+  @email="email@example.com",
+  @emails={},
+  @facebook=nil,
+  @flags={"hide_stripe"=>false},
+  @has_affirm=true,
+  @has_paypalx=false,
+  @id="foo",
+  @message_to_buyer=nil,
+  @name="John Doe",
+  @nexus=[],
+  @notifications={},
+  @paypal_email="",
+  @shipping_rates={},
+  @stripe={},
+  @subscription={},
+  @tax_rates={},
+  @twitter="",
+  @updated=1403064604899,
+  @updated_date="2014-06-18T04:10:04.899Z",
+  @webhooks={},
+  @website=nil>
+```
+
+It updates the user
+
+``` ruby
+user = Celery::User.me
+user.update(twitter: '@foo')
+# => true
+```
+
 ## Roadmap
 
 * Finish Orders and Products endpoint
-* Add users endpoint
 * Add coupons endpoint
 * Add shop endpoint
 
