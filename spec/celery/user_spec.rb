@@ -1,11 +1,9 @@
 require 'spec_helper'
 
 describe Celery::User, 'class methods' do
-
   it 'gets the user' do
     expect(Celery::User.me).to be_kind_of Celery::User
   end
-
 end
 
 describe Celery::User, 'instance methods' do
