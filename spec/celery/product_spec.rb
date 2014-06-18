@@ -33,3 +33,14 @@ describe Celery::Product, 'class methods' do
     expect(Celery::Product.get(product.id).id).to eq(product.id)
   end
 end
+
+describe Celery::Product, 'instance methods' do
+  let!(:products) { Celery::Product.all }
+  let!(:product)  { products.first      }
+
+  it 'updates the product attributes' do
+    name = Faker::Lorem.word
+    expect(product.update(name: name)).to eq(true)
+    expect(product.name).to               eq(name)
+  end
+end
