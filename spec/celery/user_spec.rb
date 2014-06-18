@@ -21,5 +21,11 @@ describe Celery::User, 'instance methods' do
       expect(user.update(name: 'Antonio')).to eq(true)
       expect(user.name).to eq('Antonio')
     end
+
+    it "does not perform the action if there's no product present" do
+      expect{
+        user.update(foo: 'foo')
+      }.to raise_error NoMethodError
+    end
   end
 end
