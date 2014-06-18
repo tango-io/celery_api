@@ -80,37 +80,7 @@ It gets the store owner profile
 
 ``` ruby
 user = Celery::User.me
-# => #<Celery::User
-  @_id="foo",
-  @access_token="foo",
-  @affirm={},
-  @analytics={"ga_id"=>"", "perfect_audience_id"=>""},
-  @business={"name"=>nil, "email"=>nil, "phone"=>nil},
-  @confirmation_url="",
-  @created=1401480988785,
-  @created_date="2014-05-30T20:16:28.785Z",
-  @currency="usd",
-  @email="email@example.com",
-  @emails={},
-  @facebook=nil,
-  @flags={"hide_stripe"=>false},
-  @has_affirm=true,
-  @has_paypalx=false,
-  @id="foo",
-  @message_to_buyer=nil,
-  @name="John Doe",
-  @nexus=[],
-  @notifications={},
-  @paypal_email="",
-  @shipping_rates={},
-  @stripe={},
-  @subscription={},
-  @tax_rates={},
-  @twitter="",
-  @updated=1403064604899,
-  @updated_date="2014-06-18T04:10:04.899Z",
-  @webhooks={},
-  @website=nil>
+# => #<Celery::User @_id="foo", @access_token="foo", @affirm={}, @analytics={"ga_id"=>"", "perfect_audience_id"=>""}, @business={"name"=>nil, "email"=>nil, "phone"=>nil}, @confirmation_url="", @created=1401480988785, @created_date="2014-05-30T20:16:28.785Z", @currency="usd", @email="email@example.com", @emails={}, @facebook=nil, @flags={"hide_stripe"=>false}, @has_affirm=true, @has_paypalx=false, @id="foo", @message_to_buyer=nil, @name="John Doe", @nexus=[], @notifications={}, @paypal_email="", @shipping_rates={}, @stripe={}, @subscription={}, @tax_rates={}, @twitter="", @updated=1403064604899, @updated_date="2014-06-18T04:10:04.899Z", @webhooks={}, @website=nil>
 ```
 
 It updates the user
