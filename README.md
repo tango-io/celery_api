@@ -64,34 +64,14 @@ Get all the orders from the API.
 
 ``` ruby
 Celery::Order.all
-# => [#<Celery::Order
-  @id="foo",
-  @buyer= #<Celery::Buyer:0x00000101162ea0>,
-  @card=#<Celery::Card:0x0000010115a840>,
-  @name="Chocholate cake",
-  @notes="",
-  @products= [#<Celery::Product:0x000001011605b0>],
-  @status="paid_balance",
-  @subtotal=0,
-  @taxes=0,
-  @total=0>]
+# => [#<Celery::Order @id="foo", @buyer= #<Celery::Buyer>, @card=#<Celery::Card>, @name="Chocholate cake", @products= [#<Celery::Product>], @status="paid_balance", @subtotal=0, @taxes=0, @total=0>]
 ```
 
 Decode an order from the confirmation page payload.
 
 ``` ruby
 Celery::Order.decode_order(params[:order])
-# => #<Celery::Order
-  @id="foo",
-  @buyer= #<Celery::Buyer:0x00000101162ea0>,
-  @card=#<Celery::Card:0x0000010115a840>,
-  @name="Chocholate cake",
-  @notes="",
-  @products= [#<Celery::Product:0x000001011605b0>],
-  @status="paid_balance",
-  @subtotal=0,
-  @taxes=0,
-  @total=0>
+# => #<Celery::Order @id="foo", @buyer= #<Celery::Buyer>, @card=#<Celery::Card>, @name="Chocholate cake", @products= [#<Celery::Product>], @status="paid_balance", @subtotal=0, @taxes=0, @total=0>
 ```
 
 ### User
