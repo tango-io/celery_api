@@ -43,4 +43,8 @@ describe Celery::Product, 'instance methods' do
     expect(product.update(name: name)).to eq(true)
     expect(product.name).to               eq(name)
   end
+
+  it 'deletes a product' do
+    expect(product.destroy).to eq(true)
+  end
 end

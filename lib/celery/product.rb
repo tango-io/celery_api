@@ -31,6 +31,13 @@ module Celery
     def update_local_object(attrs)
       attrs.each { |key, value| self.send("#{key}=", value) }
     end
+
+    def destroy
+      endpoint_path     = Celery.endpoint + "products" + "/" + self.id
+      options           = Celery.parameterize_options
+      response          = HTTParty.delete("#{endpoint_path}?#{options}")
+      return response['status']
+    end
   end
 
 end
