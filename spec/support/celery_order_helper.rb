@@ -4,6 +4,6 @@ module CeleryOrderHelper
   end
 
   def celery_decoded_order
-    @decoded_order ||= Celery::Orders.decode_order(celery_encoded_order)
+    @decoded_order ||= Celery::Order.decode(celery_encoded_order)
   end
 end

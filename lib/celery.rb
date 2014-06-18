@@ -10,11 +10,9 @@ module Celery
   autoload :Card, "celery/card"
   autoload :Buyer, "celery/buyer"
   autoload :Order, "celery/order"
-  autoload :Orders, "celery/orders"
   autoload :Seller, "celery/seller"
   autoload :Address, "celery/address"
   autoload :Billing, "celery/billing"
   autoload :Product, "celery/product"
-  autoload :Products, "celery/products"
   autoload :Tracking, "celery/tracking"
 end
