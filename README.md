@@ -28,6 +28,36 @@ Celery::Product.all
 # => [#<Celery::Product @id="foo", @name="Foo bar", @slug="foo-bar">]
 ```
 
+Create a new product
+
+``` ruby
+Celery::Product.create(name: 'Foo bar', price: 10000, deposit: 1000)
+# => #<Celery::Product @id="foo", @name="Foo bar", @slug="foo-bar", @price=10000>
+```
+
+Get 1 product from the API
+
+``` ruby
+Celery::Product.get('foo')
+# => #<Celery::Product @id="foo", @name="Foo bar", @slug="foo-bar">
+```
+
+Update a product
+
+``` ruby
+product = Celery::Product.get('foo')
+product.update(name: "Bar baz")
+# => true
+```
+
+Destroy a product
+
+``` ruby
+product = Celery::Product.get('foo')
+product.destroy
+# => true
+```
+
 ### Orders
 
 Get all the orders from the API.
