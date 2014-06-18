@@ -10,9 +10,16 @@ end
 
 describe Celery::User, 'instance methods' do
   let!(:attrs) { { "email" => Faker::Internet.email, "name" => Faker::Name.name } }
-  let!(:user) { Celery::User.new(attrs) }
+  let!(:user) { Celery::User.me }
 
   it 'creates a new instance of user' do
     expect(user).to be_kind_of Celery::User
+  end
+
+  context 'Update' do
+    it 'performs the action' do
+      expect(user.update(name: 'Antonio')).to eq(true)
+      expect(user.name).to eq('Antonio')
+    end
   end
 end

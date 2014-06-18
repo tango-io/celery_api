@@ -9,6 +9,22 @@ module Celery
       :subscription, :business, :has_affirm, :message_to_buyer, :access_token,
       :emails, :has_paypalx
 
+    def update(attrs={})
+      response = HTTParty.put(
+        Celery.endpoint + "users/me?" + Celery.parameterize_options,
+        body: attrs.to_json,
+        headers: { 'Content-Type' => 'application/json' }
+      )
+
+      if response['meta']['code'] == 200
+        update_local_object(attrs)
+        return true
+      end
+    end
+
+    def update_local_object(attrs)
+      attrs.each { |key, value| self.send("#{key}=", value) }
+    end
 
     class << self
       def me
