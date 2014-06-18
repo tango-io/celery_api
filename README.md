@@ -25,7 +25,7 @@ Get all the products from the API.
 
 ``` ruby
 Celery::Product.all
-# => [#<Celery::Product @id="5388e7749ee1950400de0555", @name="Chocholate cake", @slug="choco-cake">]
+# => [#<Celery::Product @id="foo", @name="Foo bar", @slug="foo-bar">]
 ```
 
 ### Orders
@@ -35,7 +35,7 @@ Get all the orders from the API.
 ``` ruby
 Celery::Order.all
 # => [#<Celery::Order
-  @id="101475307",
+  @id="foo",
   @buyer= #<Celery::Buyer:0x00000101162ea0>,
   @card=#<Celery::Card:0x0000010115a840>,
   @name="Chocholate cake",
@@ -52,7 +52,7 @@ Decode an order from the confirmation page payload.
 ``` ruby
 Celery::Order.decode_order(params[:order])
 # => #<Celery::Order
-  @id="101475307",
+  @id="foo",
   @buyer= #<Celery::Buyer:0x00000101162ea0>,
   @card=#<Celery::Card:0x0000010115a840>,
   @name="Chocholate cake",
