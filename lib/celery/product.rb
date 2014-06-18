@@ -2,7 +2,8 @@ module Celery
 
   class Product < Base
 
-    ENDPOINT_RESOURCE = "products"
+    ENDPOINT_RESOURCE          = "products"
+    ENDPOINT_RESOURCE_SINGULAR = "product"
 
     extend Celery::EndpointMethods
 
