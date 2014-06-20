@@ -12,7 +12,8 @@ module Celery
     def update(attrs={})
       update_local_object(attrs)
       response = perform_request(attrs)
-      return true if response['meta']['code'] == 200
+
+      return response['meta']['code'] == 200 ? true : false
     end
 
     def perform_request(attrs)
