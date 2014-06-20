@@ -2,7 +2,8 @@ module Celery
 
   class Order < Base
 
-    ENDPOINT_RESOURCE = "orders"
+    ENDPOINT_RESOURCE          = "orders"
+    ENDPOINT_RESOURCE_SINGULAR = "order"
 
     extend Celery::EndpointMethods
 
@@ -40,6 +41,9 @@ module Celery
       def decode(encoded_string)
         decoded_string = Base64.decode64(encoded_string)
         Celery::Order.new(JSON.parse(decoded_string))
+      end
+
+      def find(order_id)
       end
     end
   end
