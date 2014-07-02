@@ -20,19 +20,28 @@ describe Celery::Order, 'class methods' do
   end
 
   describe '.get' do
-  let!(:attrs) do
-    {
-      seller_id: "5388e71c5d519405004e3c3c",
-      buyer: {
-        "email" => Faker::Internet.email,
-        "name"=> Faker::Name.name,
-        "address"=> { "company_name"=>"", "street"=>"asdfasdf", "street2"=>"", "city"=>"asdfasfa", "state"=>"asdfasdf", "zip"=>"1231234", "country"=>"MX", "phone"=>"" },
-      },
-      products: [ { "slug"=>"choco-cake", "name"=>"Chocholate cake", "quantity"=>1 } ]
-    }
-  end
+    let!(:attrs) do
+      {
+        seller_id: "5388e71c5d519405004e3c3c",
+        buyer: {
+          "email" => Faker::Internet.email,
+          "name"=> Faker::Name.name,
+          "address"=> {
+            "company_name"=>"",
+            "street"=>"asdfasdf",
+            "street2"=>"",
+            "city"=>"asdfasfa",
+            "state"=>"asdfasdf",
+            "zip"=>"1231234",
+            "country"=>"MX",
+            "phone"=>""
+          },
+        },
+        products: [ { "slug"=>"choco-cake", "name"=>"Chocholate cake", "quantity"=>1 } ]
+      }
+    end
 
-  let!(:order) { Celery::Order.create(attrs) }
+    let!(:order) { Celery::Order.create(attrs) }
 
     it 'returns an order from celery' do
       order_from_celery = Celery::Order.get(order.id)
@@ -43,17 +52,26 @@ describe Celery::Order, 'class methods' do
   end
 
   describe '.create' do
-    let!(:attrs) {
+    let!(:attrs) do
       {
         seller_id: "5388e71c5d519405004e3c3c",
         buyer: {
           "email" => Faker::Internet.email,
           "name"=> Faker::Name.name,
-          "address"=> { "company_name"=>"", "street"=>"asdfasdf", "street2"=>"", "city"=>"asdfasfa", "state"=>"asdfasdf", "zip"=>"1231234", "country"=>"MX", "phone"=>"" },
+          "address"=> {
+            "company_name"=>"",
+            "street"=>"asdfasdf",
+            "street2"=>"",
+            "city"=>"asdfasfa",
+            "state"=>"asdfasdf",
+            "zip"=>"1231234",
+            "country"=>"MX",
+            "phone"=>""
+          },
         },
         products: [ { "slug"=>"choco-cake", "name"=>"Chocholate cake", "quantity"=>1 } ]
       }
-    }
+    end
 
     it 'creates the order' do
       order = Celery::Order.create(attrs)
@@ -70,7 +88,16 @@ describe Celery::Order, 'instance methods' do
       buyer: {
         "email" => Faker::Internet.email,
         "name"=> Faker::Name.name,
-        "address"=> { "company_name"=>"", "street"=>"asdfasdf", "street2"=>"", "city"=>"asdfasfa", "state"=>"asdfasdf", "zip"=>"1231234", "country"=>"MX", "phone"=>"" },
+        "address"=> {
+          "company_name"=>"",
+          "street"=>"asdfasdf",
+          "street2"=>"",
+          "city"=>"asdfasfa",
+          "state"=>"asdfasdf",
+          "zip"=>"1231234",
+          "country"=>"MX",
+          "phone"=>""
+        },
       },
       products: [ { "slug"=>"choco-cake", "name"=>"Chocholate cake", "quantity"=>1 } ]
     }

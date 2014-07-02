@@ -18,7 +18,12 @@ module Celery
       end
 
       def create(attrs={})
-        response = HTTParty.post("#{endpoint_path}?#{options}", body: { object_root => attrs }.to_json, headers: { 'Content-Type' => 'application/json' })
+        response = HTTParty.post(
+          "#{endpoint_path}?#{options}",
+          body:    { object_root => attrs }.to_json,
+          headers: { 'Content-Type' => 'application/json' }
+        )
+
         self.new(response[self::ENDPOINT_RESOURCE_SINGULAR])
       end
 
