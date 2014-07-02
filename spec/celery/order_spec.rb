@@ -48,6 +48,16 @@ describe Celery::Order, 'class methods' do
       expect(order).to be_kind_of Celery::Order
     end
   end
+
+  describe '.update' do
+    let!(:order) { celery_decoded_order }
+
+    it 'updates the order' do
+      expect(order.update(buyer: { name: Faker::Name.name })).to eq(true)
+      new_order = Celery::Order.get(order.id)
+      expect(new_order.name).to eq(order.name)
+    end
+  end
 end
 
 describe Celery::Order, 'instance methods' do
