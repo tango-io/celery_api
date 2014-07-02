@@ -38,6 +38,22 @@ module Celery
       @card = Celery::Card.new(card)
     end
 
+    def cancel
+      endpoint_path = Celery.endpoint + "orders" + "/" + self.id + "/cancel"
+      options       = Celery.parameterize_options
+      response      = HTTParty.get("#{endpoint_path}?#{options}")
+
+      return true if response[object_root]
+    end
+
+    def charge_deposit
+      endpoint_path = Celery.endpoint + "orders" + "/" + self.id + "/charge_deposit"
+      options       = Celery.parameterize_options
+      response      = HTTParty.post("#{endpoint_path}?#{options}")
+
+      return true if response[object_root]
+    end
+
     class << self
       def decode(encoded_string)
         decoded_string = Base64.decode64(encoded_string)

@@ -20,7 +20,19 @@ describe Celery::Order, 'class methods' do
   end
 
   describe '.get' do
-    let(:order) { celery_decoded_order }
+  let!(:attrs) do
+    {
+      seller_id: "5388e71c5d519405004e3c3c",
+      buyer: {
+        "email" => Faker::Internet.email,
+        "name"=> Faker::Name.name,
+        "address"=> { "company_name"=>"", "street"=>"asdfasdf", "street2"=>"", "city"=>"asdfasfa", "state"=>"asdfasdf", "zip"=>"1231234", "country"=>"MX", "phone"=>"" },
+      },
+      products: [ { "slug"=>"choco-cake", "name"=>"Chocholate cake", "quantity"=>1 } ]
+    }
+  end
+
+  let!(:order) { Celery::Order.create(attrs) }
 
     it 'returns an order from celery' do
       order_from_celery = Celery::Order.get(order.id)
@@ -52,7 +64,19 @@ describe Celery::Order, 'class methods' do
 end
 
 describe Celery::Order, 'instance methods' do
-  let!(:order) { celery_decoded_order }
+  let!(:attrs) do
+    {
+      seller_id: "5388e71c5d519405004e3c3c",
+      buyer: {
+        "email" => Faker::Internet.email,
+        "name"=> Faker::Name.name,
+        "address"=> { "company_name"=>"", "street"=>"asdfasdf", "street2"=>"", "city"=>"asdfasfa", "state"=>"asdfasdf", "zip"=>"1231234", "country"=>"MX", "phone"=>"" },
+      },
+      products: [ { "slug"=>"choco-cake", "name"=>"Chocholate cake", "quantity"=>1 } ]
+    }
+  end
+
+  let!(:order) { Celery::Order.create(attrs) }
 
   it { expect(order.products.first).to be_kind_of Celery::Product }
   it { expect(order.buyer).to be_kind_of Celery::Buyer            }
@@ -61,8 +85,6 @@ describe Celery::Order, 'instance methods' do
   it { expect(order.card).to be_kind_of Celery::Card              }
 
   describe '#update' do
-    let!(:order) { celery_decoded_order }
-
     it 'updates the order' do
       expect(order.update(buyer: { name: Faker::Name.name })).to eq(true)
       new_order = Celery::Order.get(order.id)
@@ -71,11 +93,20 @@ describe Celery::Order, 'instance methods' do
   end
 
   describe '#destroy' do
-    it 'updates the order' do
-      order = Celery::Order.all.last
+    it 'destroys the order' do
       expect(order.destroy).to eq(true)
 
       expect { Celery::Order.get(order.id) }.to raise_error
     end
+  end
+
+  describe '#cancel' do
+    it 'cancels the order' do
+      expect(order.cancel).to eq(true)
+    end
+  end
+
+  describe "#charge_deposit" do
+    it 'charges the order\'s deposit'
   end
 end
