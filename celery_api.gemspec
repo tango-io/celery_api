@@ -3,8 +3,8 @@ require "celery/version"
 Gem::Specification.new do |s|
   s.name        = "celery_api"
   s.version     = Celery::VERSION
-  s.authors     = ["Antonio Chavez"]
-  s.email       = ["cavjzz@gmail.com"]
+  s.authors     = ["Antonio Chavez", "Marco Gallardo", "Tonatiuh Nuñez"]
+  s.email       = ["cavjzz@gmail.com", "marco.gallardo@tangosource.com", "tonatiuhnb@gmail.com"]
   s.homepage    = "https://github.com/tangosource/celery_api"
   s.summary     = "Celery API wrapper"
   s.description = "This is an Ruby library that wraps the Celery data model"
