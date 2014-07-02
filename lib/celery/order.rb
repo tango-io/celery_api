@@ -39,18 +39,15 @@ module Celery
     end
 
     def cancel
-      response = HTTParty.get(
-        "#{self.class.endpoint_path}/#{self.id}/cancel?#{self.class.options}"
-      )
+      response = endpoint_call(:get, "cancel")
       return true if response[self.class.object_root]
     end
 
     def charge_deposit
-      response = HTTParty.post(
-        "#{self.class.endpoint_path}/#{self.id}/charge_deposit?#{self.class.options}"
-      )
+      response = endpoint_call(:post, "charge_deposit")
       return true if response[self.class.object_root]
     end
+
 
     class << self
       def decode(encoded_string)
@@ -58,6 +55,14 @@ module Celery
         Celery::Order.new(JSON.parse(decoded_string))
       end
     end
+
+    private
+      def endpoint_call(http_verb, method)
+        HTTParty.send(
+          http_verb,
+          "#{self.class.endpoint_path}/#{self.id}/#{method}?#{self.class.options}"
+        )
+      end
   end
 
 end
