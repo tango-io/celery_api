@@ -19,13 +19,6 @@ module Celery
       @_id = id
       @id = id
     end
-
-    def destroy
-      endpoint_path     = Celery.endpoint + "products" + "/" + self.id
-      options           = Celery.parameterize_options
-      response          = HTTParty.delete("#{endpoint_path}?#{options}")
-      return response['status']
-    end
   end
 
 end

@@ -46,6 +46,13 @@ module Celery
         return true if response[object_root]
       end
 
+      def destroy
+        endpoint_path     = Celery.endpoint + endpoint_resource + "/" + self.id
+        options           = Celery.parameterize_options
+        response          = HTTParty.delete("#{endpoint_path}?#{options}")
+        return response['status']
+      end
+
       private
         def update_local_object(attrs)
           attrs.each { |key, value| self.send("#{key}=", value) }

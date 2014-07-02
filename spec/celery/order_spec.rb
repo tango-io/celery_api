@@ -49,15 +49,6 @@ describe Celery::Order, 'class methods' do
     end
   end
 
-  describe '.update' do
-    let!(:order) { celery_decoded_order }
-
-    it 'updates the order' do
-      expect(order.update(buyer: { name: Faker::Name.name })).to eq(true)
-      new_order = Celery::Order.get(order.id)
-      expect(new_order.name).to eq(order.name)
-    end
-  end
 end
 
 describe Celery::Order, 'instance methods' do
@@ -68,4 +59,23 @@ describe Celery::Order, 'instance methods' do
   it { expect(order.seller).to be_kind_of Celery::Seller          }
   it { expect(order.tracking).to be_kind_of Celery::Tracking      }
   it { expect(order.card).to be_kind_of Celery::Card              }
+
+  describe '#update' do
+    let!(:order) { celery_decoded_order }
+
+    it 'updates the order' do
+      expect(order.update(buyer: { name: Faker::Name.name })).to eq(true)
+      new_order = Celery::Order.get(order.id)
+      expect(new_order.name).to eq(order.name)
+    end
+  end
+
+  describe '#destroy' do
+    it 'updates the order' do
+      order = Celery::Order.all.last
+      expect(order.destroy).to eq(true)
+
+      expect { Celery::Order.get(order.id) }.to raise_error
+    end
+  end
 end
