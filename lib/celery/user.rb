@@ -7,12 +7,13 @@ module Celery
       :shipping_rates, :tax_rates, :nexus, :stripe, :affirm, :paypal_email,
       :analytics, :flags, :confirmation_url, :twitter, :facebook, :website,
       :subscription, :business, :has_affirm, :message_to_buyer, :access_token,
-      :emails, :has_paypalx
+      :emails, :has_paypalx, :confirmation_scripts
 
     def update(attrs={})
       update_local_object(attrs)
       response = perform_request(attrs)
-      return true if response['meta']['code'] == 200
+
+      return response['meta']['code'] == 200 ? true : false
     end
 
     def perform_request(attrs)

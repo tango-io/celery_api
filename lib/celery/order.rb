@@ -2,9 +2,11 @@ module Celery
 
   class Order < Base
 
-    ENDPOINT_RESOURCE = "orders"
+    ENDPOINT_RESOURCE          = "orders"
+    ENDPOINT_RESOURCE_SINGULAR = "order"
 
-    extend Celery::EndpointMethods
+    extend Celery::EndpointMethods::ClassMethods
+    include Celery::EndpointMethods::InstanceMethods
 
     attr_accessor :id, :status, :name, :image, :slug,
       :auto_charge, :seller, :buyer, :payment, :products,
@@ -34,6 +36,20 @@ module Celery
 
     def card=(card)
       @card = Celery::Card.new(card)
+    end
+
+    def cancel
+      response = HTTParty.get(
+        "#{self.class.endpoint_path}/#{self.id}/cancel?#{self.class.options}"
+      )
+      return true if response[self.class.object_root]
+    end
+
+    def charge_deposit
+      response = HTTParty.post(
+        "#{self.class.endpoint_path}/#{self.id}/charge_deposit?#{self.class.options}"
+      )
+      return true if response[self.class.object_root]
     end
 
     class << self
