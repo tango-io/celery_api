@@ -39,19 +39,17 @@ module Celery
     end
 
     def cancel
-      endpoint_path = Celery.endpoint + "orders" + "/" + self.id + "/cancel"
-      options       = Celery.parameterize_options
-      response      = HTTParty.get("#{endpoint_path}?#{options}")
-
-      return true if response[object_root]
+      response = HTTParty.get(
+        "#{self.class.endpoint_path}/#{self.id}/cancel?#{self.class.options}"
+      )
+      return true if response[self.class.object_root]
     end
 
     def charge_deposit
-      endpoint_path = Celery.endpoint + "orders" + "/" + self.id + "/charge_deposit"
-      options       = Celery.parameterize_options
-      response      = HTTParty.post("#{endpoint_path}?#{options}")
-
-      return true if response[object_root]
+      response = HTTParty.post(
+        "#{self.class.endpoint_path}/#{self.id}/charge_deposit?#{self.class.options}"
+      )
+      return true if response[self.class.object_root]
     end
 
     class << self
