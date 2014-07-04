@@ -8,6 +8,7 @@ module Celery
   autoload :User, "celery/user"
   autoload :Base, "celery/base"
   autoload :Card, "celery/card"
+  autoload :Shop, "celery/shop"
   autoload :Buyer, "celery/buyer"
   autoload :Order, "celery/order"
   autoload :Seller, "celery/seller"
