@@ -4,7 +4,7 @@ module Celery
     def initialize(attrs={})
       attrs.each { |key, value| self.send("#{key}=", value) }
     rescue Exception => e
-      raise Celery::Error.new(attrs)
+      raise Celery::Error.new(e)
     end
   end
 
