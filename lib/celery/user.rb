@@ -9,6 +9,13 @@ module Celery
       :subscription, :business, :has_affirm, :message_to_buyer, :access_token,
       :emails, :has_paypalx, :confirmation_scripts
 
+    def initialize(response={})
+      attrs = response["data"]
+      attrs.each { |key, value| self.send("#{key}=", value) }
+    rescue Exception => e
+      raise Celery::Error.new(response)
+    end
+
     def update(attrs={})
       update_local_object(attrs)
       response = perform_request(attrs)
@@ -34,7 +41,7 @@ module Celery
         query_string += Celery.parameterize_options
         response = HTTParty.get(query_string)
 
-        self.new(response['data'])
+        self.new(response)
       end
     end
   end
