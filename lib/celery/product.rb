@@ -15,6 +15,13 @@ module Celery
       :pitch, :published, :purchase_receipt, :quantity_limit,
       :slug, :tagline, :updated, :updated_date, :video, :flags
 
+    def initialize(response={})
+      attrs = response[self.class.object_root]
+      attrs.each { |key, value| self.send("#{key}=", value) }
+    rescue Exception => e
+      raise Celery::Error.new(attrs)
+    end
+
     def _id=(id)
       @_id = id
       @id = id
