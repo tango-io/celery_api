@@ -25,7 +25,7 @@ module Celery
     def products=(products)
       @products = []
       products.each do |product|
-        @products << Celery::Product.new(product)
+        @products << Celery::Product.new("product" => product)
       end
     end
 
