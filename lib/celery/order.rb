@@ -15,6 +15,13 @@ module Celery
       :tracking, :fulfillment, :notes, :confirmation_url, :updated,
       :updated_date, :created, :created_date, :_id, :metadata, :flags
 
+    def initialize(response={})
+      attrs = response[self.class.object_root]
+      attrs.each { |key, value| self.send("#{key}=", value) }
+    rescue Exception => e
+      raise Celery::Error.new(attrs)
+    end
+
     def products=(products)
       @products = []
       products.each do |product|
@@ -52,7 +59,7 @@ module Celery
     class << self
       def decode(encoded_string)
         decoded_string = Base64.decode64(encoded_string)
-        Celery::Order.new(JSON.parse(decoded_string))
+        Celery::Order.new(object_root => JSON.parse(decoded_string))
       end
     end
 

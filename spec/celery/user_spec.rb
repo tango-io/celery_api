@@ -4,6 +4,21 @@ describe Celery::User, 'class methods' do
   it 'gets the user' do
     expect(Celery::User.me).to be_kind_of Celery::User
   end
+
+
+  describe 'Exceptions' do
+    it 'raises an error' do
+      expect do
+        Celery::User.new("Resource not found")
+      end.to raise_error Celery::Error, "Resource not found"
+    end
+
+    it 'raises an error when the attribute does not correspond with the class' do
+      expect do
+        Celery::User.new(foo: 'foo')
+      end.to raise_error Celery::Error
+    end
+  end
 end
 
 describe Celery::User, 'instance methods' do

@@ -9,12 +9,12 @@ module Celery
       end
 
       def build_collection(collection)
-        collection.map { |item| self.new(item) }
+        collection.map { |item| self.new(object_root => item) }
       end
 
       def get(id)
         response = HTTParty.get("#{endpoint_path}/#{id}?#{options}")
-        self.new(response[self::ENDPOINT_RESOURCE_SINGULAR])
+        self.new(response)
       end
 
       def create(attrs={})
@@ -23,8 +23,7 @@ module Celery
           body:    { object_root => attrs }.to_json,
           headers: { 'Content-Type' => 'application/json' }
         )
-
-        self.new(response[self::ENDPOINT_RESOURCE_SINGULAR])
+        self.new(response)
       end
 
       def endpoint_path
