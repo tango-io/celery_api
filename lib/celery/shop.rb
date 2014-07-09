@@ -10,7 +10,7 @@ module Celery
     class << self
       def get(slug)
         response = HTTParty.get("#{endpoint_path}/#{slug}")
-        Celery::Product.new(response["product"])
+        Celery::Product.new(response)
       end
 
       def slugify(slug)
