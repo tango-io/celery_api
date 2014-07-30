@@ -16,5 +16,6 @@ module Celery
   autoload :Billing, "celery/billing"
   autoload :Product, "celery/product"
   autoload :Tracking, "celery/tracking"
+  autoload :Coupon, 'celery/coupon'
   autoload :EndpointMethods, "celery/endpoint_methods"
 end
