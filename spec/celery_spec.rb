@@ -1,10 +1,7 @@
 require 'spec_helper'
 
 describe Celery do
-  it { should be_kind_of Module         }
-  it { should respond_to :access_token  }
-  it { should respond_to :access_token= }
-  it { should respond_to :endpoint      }
+  it { should be_kind_of Module }
 
   it 'returns the endpoint' do
     expect(Celery.endpoint).to eq("https://api.trycelery.com/v1/")
