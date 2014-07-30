@@ -7,13 +7,14 @@ module Celery
       :shipping_rates, :tax_rates, :nexus, :stripe, :affirm, :paypal_email,
       :analytics, :flags, :confirmation_url, :twitter, :facebook, :website,
       :subscription, :business, :has_affirm, :message_to_buyer, :access_token,
-      :emails, :has_paypalx, :confirmation_scripts
+      :emails, :has_paypalx, :confirmation_scripts, :salt, :secret, :hash,
+      :application_credit, :application_credit_used, :beta, :data
 
     def update(attrs={})
       update_local_object(attrs)
-      response = perform_request(attrs)
+      response = perform_request({ user: attrs })
 
-      return response['meta']['code'] == 200 ? true : false
+      return !response['user'].nil?
     end
 
     def perform_request(attrs)
@@ -34,7 +35,7 @@ module Celery
         query_string += Celery.parameterize_options
         response = HTTParty.get(query_string)
 
-        self.new(response['data'])
+        self.new(response['user'])
       end
     end
   end
