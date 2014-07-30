@@ -43,7 +43,7 @@ describe Celery::Order, 'class methods' do
             "phone"=>""
           },
         },
-        products: [ { "slug"=>"choco-cake", "name"=>"Chocholate cake", "quantity"=>1 } ]
+        products: [ { "slug"=>"computer", "name"=>"Glasses", "quantity"=>1 } ]
       }
     end
 
@@ -90,7 +90,7 @@ end
 describe Celery::Order, 'instance methods' do
   let!(:attrs) do
     {
-      seller_id: "5388e71c5d519405004e3c3c",
+      seller_id: "53c69672237dd10700bb65af",
       buyer: {
         "email" => Faker::Internet.email,
         "name"=> Faker::Name.name,
