@@ -8,7 +8,7 @@ module Celery
       :analytics, :flags, :confirmation_url, :twitter, :facebook, :website,
       :subscription, :business, :has_affirm, :message_to_buyer, :access_token,
       :emails, :has_paypalx, :confirmation_scripts, :salt, :secret, :hash,
-      :application_credit, :application_credit_used, :beta, :data
+      :application_credit, :application_credit_used, :beta, :data, :version
 
     def update(attrs={})
       update_local_object(attrs)
