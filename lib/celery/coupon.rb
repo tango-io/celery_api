@@ -9,4 +9,8 @@ class Celery::Coupon < Celery::Base
     :type, :discount, :quantity, :slugs,
     :emails, :tags, :product, :updated,
     :updated_date, :created, :created_date
+
+  def id
+    self._id
+  end
 end
